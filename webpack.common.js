@@ -13,6 +13,11 @@ module.exports = {
         }
       },
       {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
         test: /\.html$/,
         use: ["html-loader"]
       },
@@ -25,7 +30,10 @@ module.exports = {
             outputPath: "imgs"
           }
         }
-      }
+      },
     ]
-  }
+  },
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ],
+  },
 }
