@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = merge(common, {
   mode: "development",
   output: {
-    filename: "main.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist")
   },
   plugins: [
@@ -15,15 +15,13 @@ module.exports = merge(common, {
     })
   ],
   module: {
-    rules: [
-      {
-        test: /\.scss$/,
-        use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader"
-        ]
-      },
-    ]
+    rules: [{
+      test: /\.scss$/,
+      use: [
+        "style-loader",
+        "css-loader",
+        "sass-loader"
+      ]
+    }, ]
   }
 });

@@ -1,8 +1,7 @@
 module.exports = {
   entry: "./src/index.js",
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
@@ -27,8 +26,5 @@ module.exports = {
         }
       },
     ]
-  },
-  resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ],
   },
 }
