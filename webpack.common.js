@@ -1,5 +1,5 @@
 module.exports = {
-  entry: "./src/index.ts",
+  entry: "./src/index.js",
   module: {
     rules: [
       {
@@ -11,11 +11,6 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
-      },
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
       },
       {
         test: /\.html$/,
