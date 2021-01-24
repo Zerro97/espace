@@ -15,6 +15,7 @@ window.ctx = canvas.getContext("2d");
 
 // GAME START!
 let game = new Game();
+game.setup();
 
 function start() {
   game.update();

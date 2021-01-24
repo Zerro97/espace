@@ -1,12 +1,25 @@
 export default class Render {
   constructor(entities) {
     this.entities = entities;
+    this.player;
+  }
+
+  setup() {
+    this.player = this.entities["Player"];
   }
 
   update() {
+    console.log("TODO: Use managers for entities array instead using entity. Will be looping through list of managers which in turn loop through entities that it handles. This will fix the forEach error below")
     this.clearCanvas();
+
+    // Put player at the center of canvas
+    ctx.save();
+    ctx.translate(canvas.width/2 - this.player.position.x, canvas.height/2 - this.player.position.x);
+
     this.drawMap();
     this.drawEntities();
+
+    ctx.restore();
   }
 
   clearCanvas() {
@@ -23,20 +36,19 @@ export default class Render {
 
   drawMap() {
     ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(-2000, -2000, 4000, 4000);
   }
 
   drawEntities() {
-    console.log(this.entities);
     this.entities.forEach((entity) => {
       // Draw if the entity has shape and position component
-      if(entity.components.shape && entity.components.position) {
-        if(entity.components.shape.type === "rectangle") {
-          ctx.fillStyle = entity.components.shape.color;
-          ctx.fillRect(entity.components.position.x, entity.components.position.y, entity.components.shape.width, entity.components.shape.height)
-        } else if(entity.components.shape.type === "circle") {
+      if(entity.shape && entity.position) {
+        if(entity.shape.type === "rectangle") {
+          ctx.fillStyle = entity.shape.color;
+          ctx.fillRect(entity.position.x, entity.position.y, entity.shape.width, entity.shape.height)
+        } else if(entity.shape.type === "circle") {
           
-        } else if(entity.components.shape.type === "polygon") {
+        } else if(entity.shape.type === "polygon") {
           
         }
       }

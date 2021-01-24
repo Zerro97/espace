@@ -1,9 +1,9 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export default class Entity {
-    constructor() {
+    constructor(name) {
         this.id = uuidv4();
-        this.components = {};
+        this.name = name;
     }
 
     /**
@@ -11,7 +11,7 @@ export default class Entity {
      * @return {Entity} - Entity object used for checking
      */
     addComponent(component) {
-        this.components[component.name] = component;
+        this[component.name] = component;
         return this;
     }
 
@@ -20,7 +20,7 @@ export default class Entity {
      * @return {Entity} - Entity object used for checking
      */
     removeComponent(componentName) {
-        delete this.components[componentName];
+        delete this[componentName];
         return this;
     }
 }
