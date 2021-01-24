@@ -1,11 +1,10 @@
 import Component from "./component"
 
-class Position extends Component{
-  constructor(params) {
+export default class Position extends Component{
+  constructor(x, y) {
     super("position");
 
-    params = params || {};
-    this.x = params.x || 0;
-    this.y = params.y || 0;
+    this.x = x || 0;
+    this.y = y || 0;
   }
 }

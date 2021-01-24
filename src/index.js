@@ -10,9 +10,10 @@ canvas.style.position = "absolute";
 document.body.appendChild(canvas);
 
 // Create a global variable for access across all files
+window.canvas = canvas;
 window.ctx = canvas.getContext("2d");
 
-// Start up the game
+// GAME START!
 let game = new Game();
 
 function start() {

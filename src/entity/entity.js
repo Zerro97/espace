@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-class Entity {
+export default class Entity {
     constructor() {
         this.id = uuidv4();
         this.components = {};

@@ -1,6 +1,9 @@
 export default class Movement {
-  update() {
-    let i = 0;
+  constructor(entities) {
+    this.entities = entities;
+  }
 
+  update() {
+    
   }
 }
