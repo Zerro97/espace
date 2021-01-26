@@ -3,11 +3,15 @@ import Position from "../component/position";
 import Shape from "../component/shape";
 
 export default class Assemblage {
-  createPlayer() {
-    let player = new Entity("Player");
-    player.addComponent(new Position(0,0));
-    player.addComponent(new Shape("RECTANGLE", "red"));
+    createPlayer() {
+        let playerShape = new Shape("RECTANGLE", "white");
+        playerShape.width = 20;
+        playerShape.height = 20;
 
-    return player;
-  }
+        let player = new Entity("player");
+        player.addComponent(new Position(0, 0));
+        player.addComponent(playerShape);
+
+        return player;
+    }
 }
