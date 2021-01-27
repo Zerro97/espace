@@ -1,9 +1,9 @@
 export default class Movement {
-  constructor(entities) {
-    this.entities = entities;
-  }
+    constructor() {
 
-  update() {
-    
-  }
+    }
+
+    update() {
+
+    }
 }

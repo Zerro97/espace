@@ -4,9 +4,8 @@ import Assemblage from "../assemblage/assemblage";
  * Keeps track of adding & removing entities
  */
 export default class Spawn {
-    constructor(entities) {
+    constructor() {
         this.assemblage = new Assemblage();
-        this.entities = entities;
     }
 
     update() {
@@ -15,6 +14,6 @@ export default class Spawn {
 
     setup() {
         // Add player
-        this.entities.push(this.assemblage.createPlayer());
+        entities.push(this.assemblage.createPlayer());
     }
 }

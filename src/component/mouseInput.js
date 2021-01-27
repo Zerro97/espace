@@ -5,7 +5,7 @@ import Component from "./component"
 export default class mouseInput extends Component {
     constructor() {
         // Name used to identify this component
-        super("shape");
+        super("mouseInput");
 
         this.x = 0;
         this.y = 0;

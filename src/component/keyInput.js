@@ -6,8 +6,8 @@ import Component from "./component"
 export default class keyInput extends Component {
     constructor() {
         // Name used to identify this component
-        super("shape");
+        super("keyInput");
 
-        this.keys = {};
+        this.keys = [];
     }
 }

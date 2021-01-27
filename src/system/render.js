@@ -1,11 +1,10 @@
 export default class Render {
-    constructor(entities) {
-        this.entities = entities;
+    constructor() {
         this.player;
     }
 
     setup() {
-        this.player = this.entities.find((entity) => {
+        this.player = entities.find((entity) => {
             return entity.name === "player";
         });
     }
@@ -51,14 +50,17 @@ export default class Render {
     }
 
     drawEntities() {
-        this.entities.forEach((entity) => {
+        entities.forEach((entity) => {
             // Draw if the entity has shape and position component
             if (entity.shape && entity.position) {
                 if (entity.shape.type === "rectangle") {
                     ctx.fillStyle = entity.shape.color;
                     ctx.fillRect(entity.position.x - entity.shape.width / 2, entity.position.y - entity.shape.height / 2, entity.shape.width, entity.shape.height)
                 } else if (entity.shape.type === "circle") {
-
+                    ctx.fillStyle = entity.shape.color;
+                    ctx.beginPath();
+                    ctx.ellipse(entity.position.x, entity.position.y, entity.shape.width, entity.shape.height, 0, 2 * Math.PI);
+                    ctx.fill();
                 } else if (entity.shape.type === "polygon") {
 
                 }

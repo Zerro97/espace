@@ -1,28 +1,51 @@
-import { createTextChangeRange } from "typescript";
-
 export default class Input {
-    constructor(entities) {
-        this.entities = entities.filter((entity) => {
-            // Get entities that depends on keyboard & mouse input
-            return entity.keyInput || entity.mouseInput
-        });
+    constructor() {
+        this.filteredEntity;
+    }
+
+    // TODO: Update filtered entities list whenever global entity list changes
+    updateFilteredEntity() {
+
     }
 
     setup() {
+        var filteredEntities = entities.filter((entity) => {
+            return entity.keyInput || entity.mouseInput
+        });
+
         document.body.addEventListener("keypress", (e) => {
-            //console.log("KeyP")
+            filteredEntities.forEach((entity) => {
+                if (entity.keyInput !== undefined && !entity.keyInput.keys.includes(e.key)) {
+                    entity.keyInput.keys.push(e.key);
+                }
+            })
         });
 
         document.body.addEventListener("keyup", (e) => {
-            //console.log("KeyU")
+            filteredEntities.forEach((entity) => {
+                if (entity.keyInput !== undefined) {
+                    entity.keyInput.keys = entity.keyInput.keys.filter((key) => {
+                        return key !== e.key;
+                    });
+                }
+            })
         });
 
         document.body.addEventListener("mousemove", (e) => {
-            //console.log("MouseMove")
+            filteredEntities.forEach((entity) => {
+                if (entity.mouseInput !== undefined) {
+                    entity.mouseInput.x = e.x;
+                    entity.mouseInput.y = e.y;
+                }
+            })
         });
 
         document.body.addEventListener("mousedown", (e) => {
-            //console.log("MouseDown")
+            filteredEntities.forEach((entity) => {
+                if (entity.mouseInput !== undefined) {
+
+                }
+            })
         });
     }
 }

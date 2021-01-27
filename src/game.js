@@ -2,17 +2,15 @@ import Movement from "./system/movement";
 import Render from "./system/render";
 import Spawn from "./system/spawn";
 import Input from "./system/input"
+import Entity from "./entity/entity";
 
 export default class Game {
     constructor() {
-        // List of entities used across different systems
-        this.entities = [];
-
         // Sytems to update entities
-        this.input = new Input(this.entities);
-        this.spawn = new Spawn(this.entities);
-        this.movement = new Movement(this.entities);
-        this.render = new Render(this.entities);
+        this.input = new Input();
+        this.spawn = new Spawn();
+        this.movement = new Movement();
+        this.render = new Render();
 
         // Order of systems are critical
         this.systems = [
@@ -29,10 +27,11 @@ export default class Game {
         })
     }
 
-    // INITIAL SET UP
+    // INITIAL SET UP (called once before update function starts)
     setup() {
-        this.input.setup();
+        // Spawn should be first as it creates entities, which is referred by other systems after
         this.spawn.setup();
+        this.input.setup();
         this.render.setup();
     }
 }
