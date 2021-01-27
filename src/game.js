@@ -32,6 +32,7 @@ export default class Game {
         // Spawn should be first as it creates entities, which is referred by other systems after
         this.spawn.setup();
         this.input.setup();
+        this.movement.setup();
         this.render.setup();
     }
 }

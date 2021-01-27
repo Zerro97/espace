@@ -1,5 +1,8 @@
-export default class Render {
+import System from "./system";
+
+export default class Render extends System {
     constructor() {
+        super("position", "shape");
         this.player;
     }
 
@@ -14,7 +17,7 @@ export default class Render {
 
         // Put player at the center of canvas
         ctx.save();
-        ctx.translate(canvas.width / 2 - this.player.position.x, canvas.height / 2 - this.player.position.x);
+        ctx.translate(canvas.width / 2 - this.player.position.x, canvas.height / 2 - this.player.position.y);
 
         this.drawMap();
         this.drawEntities();
@@ -36,16 +39,16 @@ export default class Render {
 
     drawMap() {
         ctx.fillStyle = "black";
-        ctx.fillRect(-2000, -2000, 4000, 4000);
+        ctx.fillRect(-1000, -1000, 2000, 2000);
 
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < 20; i++) {
             ctx.fillStyle = "#333";
-            ctx.fillRect(-2000 + 4000 * i / 40 - 2, -2000, 4, 4000);
+            ctx.fillRect(-1000 + 2000 * i / 20 - 2, -1000, 4, 2000);
         }
 
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < 20; i++) {
             ctx.fillStyle = "#333 ";
-            ctx.fillRect(-2000, -2000 + 4000 * i / 40 - 2, 4000, 4);
+            ctx.fillRect(-1000, -1000 + 2000 * i / 20 - 2, 2000, 4);
         }
     }
 

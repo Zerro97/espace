@@ -8,6 +8,6 @@ export default class keyInput extends Component {
         // Name used to identify this component
         super("keyInput");
 
-        this.keys = [];
+        this.keys = {};
     }
 }

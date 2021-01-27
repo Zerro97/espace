@@ -1,10 +1,12 @@
 import Assemblage from "../assemblage/assemblage";
+import System from "./system";
 
 /**
  * Keeps track of adding & removing entities
  */
-export default class Spawn {
+export default class Spawn extends System{
     constructor() {
+        super();
         this.assemblage = new Assemblage();
     }
 
