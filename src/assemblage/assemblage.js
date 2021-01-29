@@ -1,4 +1,5 @@
 import Entity from "../entity/entity";
+import Damage from "../component/damage";
 import Shape from "../component/shape";
 import Speed from "../component/speed";
 import Position from "../component/position";
@@ -8,6 +9,7 @@ import Velocity from "../component/velocity";
 import MouseInput from "../component/mouseInput";
 import Slide from "../component/slide";
 import Acceleration from "../component/acceleration";
+import Follow from "../component/follow";
 
 
 export default class Assemblage {
@@ -29,5 +31,20 @@ export default class Assemblage {
         player.addComponent(playerShape);
 
         return player;
+    }
+
+    createSimpleEnemy() {
+      let enemyShape = new Shape("RECTANGLE", "red");
+      enemyShape.width = 15;
+      enemyShape.height = 15;
+
+      let enemy = new Entity("SEnemy");
+      enemy.addComponent(new Position(-200, -200));
+      enemy.addComponent(new Velocity());
+      enemy.addComponent(new Follow());
+      enemy.addComponent(new Damage());
+      enemy.addComponent(enemyShape);
+
+      return enemy;
     }
 }

@@ -2,12 +2,14 @@ import Movement from "./system/movement";
 import Render from "./system/render";
 import Spawn from "./system/spawn";
 import Input from "./system/input"
+import Follow from "./system/follow"
 import Entity from "./entity/entity";
 
 export default class Game {
     constructor() {
         // Sytems to update entities
         this.input = new Input();
+        this.follow = new Follow();
         this.spawn = new Spawn();
         this.movement = new Movement();
         this.render = new Render();
@@ -15,6 +17,7 @@ export default class Game {
         // Order of systems are critical
         this.systems = [
             this.spawn,
+            this.follow,
             this.movement,
             this.render
         ];
@@ -32,6 +35,7 @@ export default class Game {
         // Spawn should be first as it creates entities, which is referred by other systems after
         this.spawn.setup();
         this.input.setup();
+        this.follow.setup();
         this.movement.setup();
         this.render.setup();
     }
