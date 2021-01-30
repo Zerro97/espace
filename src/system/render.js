@@ -74,8 +74,10 @@ export default class Render extends System {
                     if (entity.name !== "player" && !entity.projectile) {
                         ctx.fillStyle = "white";
                         ctx.fillRect(entity.position.x - 25, entity.position.y - entity.shape.height / 2 - 40 / 2, 50, 10)
+                        
+                        // Reduce width according to health
                         ctx.fillStyle = "red";
-                        ctx.fillRect(entity.position.x - 23, entity.position.y - entity.shape.height / 2 - 36 / 2, 46, 6)
+                        ctx.fillRect(entity.position.x - 23, entity.position.y - entity.shape.height / 2 - 36 / 2, 46 * (entity.health.cur/entity.health.max), 6)
                     }
 
                 } else if (entity.shape.type === "circle") {

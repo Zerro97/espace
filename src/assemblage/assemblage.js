@@ -44,6 +44,7 @@ export default class Assemblage {
         enemyShape.height = 15;
 
         let enemy = new Entity("SEnemy");
+        enemy.addComponent(new Health());
         enemy.addComponent(new Position(-200, -200));
         enemy.addComponent(new Velocity());
         enemy.addComponent(new Follow());

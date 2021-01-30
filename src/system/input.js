@@ -1,5 +1,4 @@
 import Assemblage from "../assemblage/assemblage";
-import Entity from "../entity/entity";
 import System from "./system";
 import { getUnitVector } from "../util/helperFunc"
 
@@ -140,6 +139,11 @@ export default class Input extends System {
             projectile.rotation.angle = -Math.atan2(unitVector.xunit, unitVector.yunit);
 
             entities.push(projectile);
+        });
+
+        window.addEventListener("resize", (e) => {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
         });
     }
 }

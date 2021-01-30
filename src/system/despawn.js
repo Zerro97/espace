@@ -10,25 +10,28 @@ export default class Despawn extends System {
     }
 
     update() {
-        console.log(entities);
-
+      // True: keep, False: Filter Out
         entities = entities.filter((entity) => {
-            if (entity.health) {
-                return entity.health.cur > 0;
+            // Check if the health is 0 or below 
+            if (entity.health && entity.health.cur <= 0) {
+              return false;
             }
 
-            // Check if bullet is out of map (must be checked before max collision)
+            // Check if bullet is out of map
             // TODO: Dynamic map size
             if (entity.projectile && entity.position) {
-                return entity.position.x > -1000 && entity.position.x < 1000 && entity.position.y > -1000 && entity.position.y < 1000
+              if(entity.position.x < -1000 || entity.position.x > 1000 || entity.position.y < -1000 || entity.position.y > 1000) {
+                return false;
+              }
             }
-
+            
             // Check if bullet has reached maximum collision occurence
-            if (entity.projectile) {
-                return entity.projectile.collideCur > 0;
+            if (entity.projectile && entity.projectile.collideCur <= 0) {
+              return false;
             }
 
             return true;
         })
+        console.log(entities);
     }
 }
