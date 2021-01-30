@@ -1,0 +1,12 @@
+[0130/121407.993:ERROR:exception_handler_server.cc(470)] failed to open 2772
+[0130/122406.488:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+[0130/124527.340:ERROR:exception_handler_server.cc(470)] failed to open 8784
+[0130/132106.544:ERROR:exception_handler_server.cc(470)] failed to open 2324
+[0130/132106.622:ERROR:exception_handler_server.cc(470)] failed to open 9008
+[0130/132317.082:ERROR:exception_handler_server.cc(470)] failed to open 9008
+[0130/132407.384:ERROR:exception_handler_server.cc(470)] failed to open 12792
+[0130/132559.297:ERROR:exception_handler_server.cc(470)] failed to open 9008
+[0130/132605.439:ERROR:exception_handler_server.cc(470)] failed to open 8732
+[0130/132703.939:ERROR:exception_handler_server.cc(470)] failed to open 12748
+[0130/134548.157:ERROR:exception_handler_server.cc(470)] failed to open 9256
+[0130/140311.392:ERROR:exception_handler_server.cc(470)] failed to open 10304

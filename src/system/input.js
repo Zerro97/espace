@@ -137,6 +137,7 @@ export default class Input extends System {
             projectile.position.y = this.player.position.y;
             projectile.velocity.x = unitVector.xunit * 20;
             projectile.velocity.y = unitVector.yunit * 20;
+            projectile.rotation.angle = -Math.atan2(unitVector.xunit, unitVector.yunit);
 
             entities.push(projectile);
         });

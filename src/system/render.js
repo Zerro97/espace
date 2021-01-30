@@ -69,6 +69,15 @@ export default class Render extends System {
                 if (entity.shape.type === "rectangle") {
                     ctx.fillStyle = entity.shape.color;
                     ctx.fillRect(entity.position.x - entity.shape.width / 2, entity.position.y - entity.shape.height / 2, entity.shape.width, entity.shape.height)
+
+                    // Draw health bar
+                    if (entity.name !== "player" && !entity.projectile) {
+                        ctx.fillStyle = "white";
+                        ctx.fillRect(entity.position.x - 25, entity.position.y - entity.shape.height / 2 - 40 / 2, 50, 10)
+                        ctx.fillStyle = "red";
+                        ctx.fillRect(entity.position.x - 23, entity.position.y - entity.shape.height / 2 - 36 / 2, 46, 6)
+                    }
+
                 } else if (entity.shape.type === "circle") {
                     ctx.fillStyle = entity.shape.color;
                     ctx.beginPath();

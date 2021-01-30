@@ -11,6 +11,8 @@ import Slide from "../component/slide";
 import Acceleration from "../component/acceleration";
 import Follow from "../component/follow";
 import Health from "../component/health";
+import Projectile from "../component/type/projectile";
+import Enemy from "../component/type/enemy";
 
 
 export default class Assemblage {
@@ -46,20 +48,23 @@ export default class Assemblage {
         enemy.addComponent(new Velocity());
         enemy.addComponent(new Follow());
         enemy.addComponent(new Damage());
+        enemy.addComponent(new Enemy());
         enemy.addComponent(enemyShape);
 
         return enemy;
     }
 
     createSimpleProjectile() {
-        let projectileShape = new Shape("RECTANGLE", "white");
-        projectileShape.width = 2;
-        projectileShape.height = 2;
+        let projectileShape = new Shape("RECTANGLE", "green");
+        projectileShape.width = 3;
+        projectileShape.height = 20;
 
         let projectile = new Entity("SProj");
         projectile.addComponent(new Position());
         projectile.addComponent(new Velocity());
         projectile.addComponent(new Damage());
+        projectile.addComponent(new Projectile());
+        projectile.addComponent(new Rotation());
         projectile.addComponent(projectileShape);
 
         return projectile;
