@@ -19,6 +19,10 @@ export default class Spawn extends System {
         entities.push(this.assemblage.createPlayer());
 
         // Add Enemy
+        for(let i=0; i<10; i++) {
+          entities.push(this.assemblage.createSimpleEnemy());
+        }
         entities.push(this.assemblage.createSimpleEnemy());
+        
     }
 }

@@ -130,16 +130,34 @@ export default class Input extends System {
         });
 
         document.body.addEventListener("mousedown", (e) => {
-            let unitVector = getUnitVector(canvas.width / 2, canvas.height / 2, e.x, e.y);
-            let projectile = new Assemblage().createSimpleProjectile();
-            projectile.position.x = this.player.position.x;
-            projectile.position.y = this.player.position.y;
-            projectile.velocity.x = unitVector.xunit * 20;
-            projectile.velocity.y = unitVector.yunit * 20;
-            projectile.rotation.angle = -Math.atan2(unitVector.xunit, unitVector.yunit);
+          let unitVector = getUnitVector(canvas.width / 2, canvas.height / 2, e.x, e.y);
+          let projectile = new Assemblage().createSimpleProjectile();
+          projectile.position.x = this.player.position.x;
+          projectile.position.y = this.player.position.y;
+          projectile.velocity.x = unitVector.xunit * projectile.speed.max;
+          projectile.velocity.y = unitVector.yunit * projectile.speed.max;
+          projectile.rotation.angle = -Math.atan2(unitVector.xunit, unitVector.yunit);
 
-            entities.push(projectile);
+          entities.push(projectile);
+
+          //pressing.call(this, e);
         });
+
+        document.body.addEventListener("mouseup", notPressing, false);
+
+        let timerID;
+        function pressing(e) {
+          requestAnimationFrame(timer.call(this, e));
+          e.preventDefault();
+        }
+
+        function notPressing(e) {
+          cancelAnimationFrame(timerID);
+        }
+
+        function timer(e) {
+          timerID = requestAnimationFrame(timer.call(this, e));
+        }
 
         window.addEventListener("resize", (e) => {
           canvas.width = window.innerWidth;

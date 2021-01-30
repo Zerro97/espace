@@ -6,4 +6,8 @@ function getUnitVector(x1, y1, x2, y2) {
     return { xunit: xvector / magnitude, yunit: yvector / magnitude };
 }
 
-export { getUnitVector };
+function getRandomPos() {
+  return {x: Math.random()*2000-1000, y: Math.random()*2000-1000}
+}
+
+export { getUnitVector, getRandomPos };

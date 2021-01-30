@@ -3,6 +3,7 @@ import Damage from "../component/damage";
 import Shape from "../component/shape";
 import Speed from "../component/speed";
 import Position from "../component/position";
+import Knockback from "../component/knockback";
 import KeyInput from "../component/keyInput";
 import Rotation from "../component/rotation";
 import Velocity from "../component/velocity";
@@ -13,7 +14,7 @@ import Follow from "../component/follow";
 import Health from "../component/health";
 import Projectile from "../component/type/projectile";
 import Enemy from "../component/type/enemy";
-
+import { getRandomPos } from "../util/helperFunc";
 
 export default class Assemblage {
     createPlayer() {
@@ -29,7 +30,7 @@ export default class Assemblage {
         player.addComponent(new MouseInput());
         player.addComponent(new Slide());
         player.addComponent(new Rotation());
-        player.addComponent(new Speed());
+        player.addComponent(new Speed(5));
         player.addComponent(new Velocity());
         player.addComponent(new Acceleration());
         player.addComponent(new Rotation());
@@ -44,9 +45,12 @@ export default class Assemblage {
         enemyShape.height = 15;
 
         let enemy = new Entity("SEnemy");
+        let pos = getRandomPos();
+        enemy.addComponent(new Position(pos.x, pos.y));
         enemy.addComponent(new Health());
-        enemy.addComponent(new Position(-200, -200));
         enemy.addComponent(new Velocity());
+        enemy.addComponent(new Speed(1));
+        enemy.addComponent(new Knockback());
         enemy.addComponent(new Follow());
         enemy.addComponent(new Damage());
         enemy.addComponent(new Enemy());
@@ -63,7 +67,8 @@ export default class Assemblage {
         let projectile = new Entity("SProj");
         projectile.addComponent(new Position());
         projectile.addComponent(new Velocity());
-        projectile.addComponent(new Damage());
+        projectile.addComponent(new Speed(20));
+        projectile.addComponent(new Damage(1));
         projectile.addComponent(new Projectile());
         projectile.addComponent(new Rotation());
         projectile.addComponent(projectileShape);

@@ -14,16 +14,14 @@ export default class Follow extends System {
     }
 
     update() {
-        this.filterEntities();
+        //this.filterEntities();
 
-        this.filteredEntities.forEach((entity) => {
-
+        entities.forEach((entity) => {
+          if(entity.follow && entity.position && entity.velocity) {
             let vector = getUnitVector(entity.position.x, entity.position.y, this.player.position.x, this.player.position.y);
-            entity.velocity.x = vector.xunit;
-            entity.velocity.y = vector.yunit;
-
-            entity.position.x += entity.velocity.x;
-            entity.position.y += entity.velocity.y;
+            entity.velocity.x = vector.xunit * entity.speed.max;
+            entity.velocity.y = vector.yunit * entity.speed.max;
+          }
         })
     }
 }

@@ -7,6 +7,8 @@ import Input from "./system/input"
 import Follow from "./system/follow"
 import Hud from "./system/hud"
 import Wave from "./system/wave";
+import Timer from "./system/timer";
+import Knockback from "./system/knockback";
 
 export default class Game {
     constructor() {
@@ -16,18 +18,22 @@ export default class Game {
         this.spawn = new Spawn();
         this.despawn = new Despawn();
         this.movement = new Movement();
+        this.knockback = new Knockback();
         this.render = new Render();
         this.hud = new Hud();
         this.wave = new Wave();
         this.collision = new Collision();
+        this.timer = new Timer();
 
         // Order of systems are critical
         this.systems = [
             this.spawn,
             this.despawn,
+            this.timer,
             this.follow,
-            this.movement,
             this.collision,
+            this.knockback,
+            this.movement,
             this.render,
             this.wave
         ];

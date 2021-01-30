@@ -32,6 +32,5 @@ export default class Despawn extends System {
 
             return true;
         })
-        console.log(entities);
     }
 }

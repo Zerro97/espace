@@ -21,20 +21,12 @@ export default class Collision extends System {
 
     checkProjectile(projectile) {
       // Get enemy entities
-      entities.forEach((entity) => {
+      // Used some instead of foreach to break out of loop
+      entities.some((entity) => {
         if (entity.enemy) {
           if (entity.shape.type === "rectangle") {
-            let dx1 = (projectile.position.x + projectile.shape.width/2) - (entity.position.x - entity.shape.width/2);
-            let dx2 = (entity.position.x + entity.shape.width/2) - (projectile.position.x - projectile.shape.width/2);
-
-            let dy1 = (projectile.position.y + projectile.shape.height/2) - (entity.position.y - entity.shape.height/2);
-            let dy2 = (entity.position.y + entity.shape.height/2) - (projectile.position.y - projectile.shape.height/2);
-
-            // If there is collision between projectile and enemy
-            if (dx1 > 0 && dy1 > 0 && dx2 > 0 && dy2 > 0) {
-              entity.health.cur -= projectile.damage.amount;
-              projectile.projectile.collideCur -= 1;
-            }
+            // Return will break out of the loop
+            return this.checkRectCollision(projectile, entity);
           }
         }
       })
@@ -49,5 +41,29 @@ export default class Collision extends System {
           }
         }
       })
+    }
+
+    // TODO : currently depends on projectile, change it to allow enemy collision too
+    checkRectCollision(entity1, entity2) {
+      let dx1 = (entity1.position.x + entity1.shape.width/2) - (entity2.position.x - entity2.shape.width/2);
+      let dx2 = (entity2.position.x + entity2.shape.width/2) - (entity1.position.x - entity1.shape.width/2);
+
+      let dy1 = (entity1.position.y + entity1.shape.height/2) - (entity2.position.y - entity2.shape.height/2);
+      let dy2 = (entity2.position.y + entity2.shape.height/2) - (entity1.position.y - entity1.shape.height/2);
+
+      // If there is collision between projectile and enemy
+      if (dx1 > 0 && dy1 > 0 && dx2 > 0 && dy2 > 0) {
+        entity2.health.cur -= entity1.damage.amount;
+        entity2.knockback.timerCur = 0;
+
+        entity2.knockback.x = entity1.velocity.x/entity1.speed.max;
+        entity2.knockback.y = entity1.velocity.y/entity1.speed.max;
+        entity1.projectile.collideCur -= 1;
+      }
+
+      if(entity1.projectile.collideCur <= 0) {
+        // Break out of loop if it hit one enemy
+        return true;
+      }
     }
 }
