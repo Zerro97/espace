@@ -1,4 +1,5 @@
-import Assemblage from "../assemblage/assemblage";
+import Player from "../assemblage/player"
+import SimpleE from "../assemblage/simpleE"
 import System from "./system";
 
 /**
@@ -7,7 +8,6 @@ import System from "./system";
 export default class Spawn extends System {
     constructor() {
         super();
-        this.assemblage = new Assemblage();
     }
 
     update() {
@@ -16,13 +16,11 @@ export default class Spawn extends System {
 
     setup() {
         // Add player
-        entities.push(this.assemblage.createPlayer());
+        entities.push(Player());
 
         // Add Enemy
-        for(let i=0; i<10; i++) {
-          entities.push(this.assemblage.createSimpleEnemy());
+        for (let i = 0; i < 10; i++) {
+            entities.push(SimpleE());
         }
-        entities.push(this.assemblage.createSimpleEnemy());
-        
     }
 }

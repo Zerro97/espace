@@ -1,13 +1,9 @@
 import Component from './component';
+import { ShapeType } from '../util/types'
 
 /**
  * Defines the shape of entity. Can be rectangle, circle or polygon. Used in render system
  */
-const Types = {
-    RECTANGLE: "rectangle",
-    CIRCLE: "circle",
-    POLYGON: "polygon"
-}
 
 export default class Shape extends Component {
     constructor(type, color) {
@@ -15,7 +11,7 @@ export default class Shape extends Component {
         super("shape");
 
         // Define if it's rectangle, circle or polygon
-        this.type = Types[type];
+        this.type = ShapeType[type];
 
         // Used in rectangle & circle
         this.width = 5;

@@ -1,13 +1,12 @@
-import Component from "./component"
+import Component from "../component"
 /**
  * Defines current velocity of entity
  */
-export default class Acceleration extends Component {
+export default class Velocity extends Component {
     constructor() {
         // Name used to identify this component
-        super("acceleration");
+        super("velocity");
 
-        this.max = 0.1;
         this.x = 0;
         this.y = 0;
     }

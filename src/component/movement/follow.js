@@ -1,5 +1,5 @@
-import Component from "./component"
-import { Shape } from "../util/types"
+import Component from "../component"
+import { FollowType } from "../../util/types"
 
 export default class Follow extends Component {
     constructor(type) {
@@ -8,6 +8,6 @@ export default class Follow extends Component {
 
         this.x = 0;
         this.y = 0;
-        this.type = Shape[type];
+        this.type = FollowType[type] || "simple";
     }
 }

@@ -1,4 +1,4 @@
-import Component from "./component"
+import Component from "../component"
 
 export default class Slide extends Component {
     constructor() {
@@ -6,6 +6,6 @@ export default class Slide extends Component {
         super("slide");
 
         // 0: Left Max Velocity, 1: Left Acceleration, 2: Stop, 3: Right Accleration, 4: Right Max Vel
-		    this.moveStatus = {hor: 2, ver: 2};
+        this.moveStatus = { hor: 2, ver: 2 };
     }
 }
