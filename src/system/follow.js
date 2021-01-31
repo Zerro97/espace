@@ -14,8 +14,6 @@ export default class Follow extends System {
     }
 
     update() {
-        //this.filterEntities();
-
         entities.forEach((entity) => {
             if (entity.follow && entity.position && entity.velocity) {
                 if (entity.follow.type === "simple") {
@@ -35,18 +33,54 @@ export default class Follow extends System {
     }
 
     straightFollow(entity) {
-        if (!entity.timer) {
-            console.log("Need to have timer for straight movement!");
+        if (!entity.enemyPhase || !entity.timer) {
+            throw "Error at follow system: entity must have timer and enemyPhase component"
         }
 
-        if (entity.timer.cur1 < entity.timer.max1) {
-            entity.timer.cur1 += 1;
-            entity.velocity.x = entity.speed.max;
+        if (entity.enemyPhase.phase.rest) {
+            if (entity.timer.cur < entity.timer.max1) {
+                entity.timer.cur += 1;
+                entity.velocity.x = 0;
+                entity.velocity.y = 0;
 
-            if (entity.timer.cur1 === entity.timer.max1) {
-                entity.timer.cur2 = 0;
+                if (entity.timer.cur === entity.timer.max1) {
+                    entity.enemyPhase.phase.rest = false;
+                    entity.enemyPhase.phase.move = true;
+                    entity.timer.cur = 0;
+                }
+            }
+        } else if (entity.enemyPhase.phase.move) {
+            if (entity.enemyPhase.phase.switchDir) {
+                if (this.player.position.y < entity.position.y + entity.speed.max / 2 && this.player.position.y > entity.position.y - entity.speed.max / 2) {
+                    entity.enemyPhase.phase.rest = true;
+                    entity.enemyPhase.phase.move = false;
+                    entity.enemyPhase.phase.switchDir = !entity.enemyPhase.phase.switchDir
+                    entity.timer.cur = 0;
+                    return;
+                }
+
+                if (this.player.position.y < entity.position.y) {
+                    entity.velocity.y = -entity.speed.max;
+                } else {
+                    entity.velocity.y = entity.speed.max;
+                }
+            } else {
+                if (this.player.position.x < entity.position.x + entity.speed.max / 2 && this.player.position.x > entity.position.x - entity.speed.max / 2) {
+                    entity.enemyPhase.phase.rest = true;
+                    entity.enemyPhase.phase.move = false;
+                    entity.enemyPhase.phase.switchDir = !entity.enemyPhase.phase.switchDir
+                    entity.timer.cur = 0;
+                    return;
+                }
+
+                if (this.player.position.x < entity.position.x) {
+                    entity.velocity.x = -entity.speed.max;
+                } else {
+                    entity.velocity.x = entity.speed.max;
+                }
             }
         }
+
     }
 
 

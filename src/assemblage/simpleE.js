@@ -7,15 +7,15 @@ import Knockback from "../component/movement/knockback";
 import Velocity from "../component/movement/velocity";
 import Follow from "../component/movement/follow";
 import Health from "../component/health";
-import Enemy from "../component/type/enemy";
 import { getRandomPos } from "../util/helperFunc";
+import EnemyType from "../component/type/enemyType";
 
 export default function SimpleE() {
     let enemyShape = new Shape("RECTANGLE", "red");
     enemyShape.width = 15;
     enemyShape.height = 15;
 
-    let enemy = new Entity("SEnemy");
+    let enemy = new Entity("SimpleE");
     let pos = getRandomPos();
     enemy.addComponent(new Position(pos.x, pos.y));
     enemy.addComponent(new Health());
@@ -24,7 +24,7 @@ export default function SimpleE() {
     enemy.addComponent(new Knockback());
     enemy.addComponent(new Follow("SIMPLE"));
     enemy.addComponent(new Damage());
-    enemy.addComponent(new Enemy());
+    enemy.addComponent(new EnemyType());
     enemy.addComponent(enemyShape);
 
     return enemy;

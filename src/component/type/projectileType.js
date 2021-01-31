@@ -3,9 +3,9 @@ import Component from "../component"
 /**
  * Gets destroyed after collision
  */
-export default class Projectile extends Component {
+export default class ProjectileType extends Component {
     constructor() {
-        super("projectile");
+        super("projectileType");
 
         // Max number of collision before being destroyed
         this.collideMax = 1;

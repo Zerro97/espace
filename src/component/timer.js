@@ -7,8 +7,7 @@ export default class Timer extends Component {
         // Name used to identify this component
         super("timer");
 
-        this.cur1 = 0;
-        this.cur2 = 0;
+        this.cur = 0;
         this.max1 = max1 || 100;
         this.max2 = max2 || 100;
     }

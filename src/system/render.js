@@ -71,13 +71,13 @@ export default class Render extends System {
                     ctx.fillRect(entity.position.x - entity.shape.width / 2, entity.position.y - entity.shape.height / 2, entity.shape.width, entity.shape.height)
 
                     // Draw health bar
-                    if (entity.name !== "player" && !entity.projectile) {
+                    if (!entity.playerType && !entity.projectileType) {
                         ctx.fillStyle = "white";
                         ctx.fillRect(entity.position.x - 25, entity.position.y - entity.shape.height / 2 - 40 / 2, 50, 10)
-                        
+
                         // Reduce width according to health
                         ctx.fillStyle = "red";
-                        ctx.fillRect(entity.position.x - 23, entity.position.y - entity.shape.height / 2 - 36 / 2, 46 * (entity.health.cur/entity.health.max), 6)
+                        ctx.fillRect(entity.position.x - 23, entity.position.y - entity.shape.height / 2 - 36 / 2, 46 * (entity.health.cur / entity.health.max), 6)
                     }
 
                 } else if (entity.shape.type === "circle") {

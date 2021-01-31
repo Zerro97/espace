@@ -18,14 +18,14 @@ export default class Despawn extends System {
 
             // Check if bullet is out of map
             // TODO: Dynamic map size
-            if (entity.projectile && entity.position) {
+            if (entity.projectileType && entity.position) {
                 if (entity.position.x < -1000 || entity.position.x > 1000 || entity.position.y < -1000 || entity.position.y > 1000) {
                     return false;
                 }
             }
 
             // Check if bullet has reached maximum collision occurence
-            if (entity.projectile && entity.projectile.collideCur <= 0) {
+            if (entity.projectileType && entity.projectileType.collideCur <= 0) {
                 return false;
             }
 
