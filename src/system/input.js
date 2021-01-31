@@ -130,15 +130,19 @@ export default class Input extends System {
         });
 
         document.body.addEventListener("mousedown", (e) => {
-            let unitVector = getUnitVector(canvas.width / 2, canvas.height / 2, e.x, e.y);
-            let projectile = SimpleP();
-            projectile.position.x = this.player.position.x;
-            projectile.position.y = this.player.position.y;
-            projectile.velocity.x = unitVector.xunit * projectile.speed.max;
-            projectile.velocity.y = unitVector.yunit * projectile.speed.max;
-            projectile.rotation.angle = -Math.atan2(unitVector.xunit, unitVector.yunit);
+            if (this.player.fire.canFire) {
+                let unitVector = getUnitVector(canvas.width / 2, canvas.height / 2, e.x, e.y);
+                let projectile = SimpleP();
+                projectile.position.x = this.player.position.x;
+                projectile.position.y = this.player.position.y;
+                projectile.velocity.x = unitVector.xunit * projectile.speed.max;
+                projectile.velocity.y = unitVector.yunit * projectile.speed.max;
+                projectile.rotation.angle = -Math.atan2(unitVector.xunit, unitVector.yunit);
 
-            entities.push(projectile);
+                entities.push(projectile);
+                this.player.fire.fired = true;
+            }
+
 
             //pressing.call(this, e);
         });
@@ -161,8 +165,8 @@ export default class Input extends System {
         }
 
         window.addEventListener("resize", (e) => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            canvas.width = document.body.clientWidth;
+            canvas.height = document.body.clientHeight;
         });
     }
 }

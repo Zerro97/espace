@@ -12,6 +12,7 @@ import Health from "../component/health";
 import Knockback from "../component/movement/knockback";
 import PlayerType from "../component/type/playerType";
 import Invisibility from "../component/invisibility";
+import Fire from "../component/fire";
 
 export default function Player() {
     let playerShape = new Shape("RECTANGLE", "white");
@@ -22,6 +23,7 @@ export default function Player() {
     player.addComponent(new PlayerType());
     player.addComponent(new Invisibility());
     player.addComponent(new Health());
+    player.addComponent(new Fire());
     player.addComponent(new Rotation());
     player.addComponent(new Position(0, 0));
     player.addComponent(new KeyInput());
@@ -34,6 +36,7 @@ export default function Player() {
     player.addComponent(new Rotation());
     player.addComponent(new Knockback());
     player.addComponent(playerShape);
+
 
     return player;
 }

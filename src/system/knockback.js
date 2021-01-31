@@ -11,7 +11,6 @@ export default class Knockback extends System {
     update() {
         entities.forEach((entity) => {
             if (entity.knockback && entity.knockback.timerCur < entity.knockback.timerMax) {
-                console.log("KNOCK BACK")
                 entity.velocity.x = entity.knockback.x * entity.knockback.amount;
                 entity.velocity.y = entity.knockback.y * entity.knockback.amount;
                 entity.knockback.timerCur++;

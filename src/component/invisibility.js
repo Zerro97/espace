@@ -6,9 +6,10 @@ import Component from "./component"
 export default class Invisibility extends Component {
     constructor() {
         // Name used to identify this component
-        super("invisiblity");
+        super("invisibility");
 
-        this.time = 20;
-        this.cur = 0;
+        this.invisible = false;
+        this.max = 100;
+        this.cur = 100;
     }
 }

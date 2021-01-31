@@ -1,6 +1,7 @@
 import Movement from "./system/movement";
 import Collision from "./system/collision";
 import Render from "./system/render";
+import Status from "./system/status";
 import Spawn from "./system/spawn";
 import Despawn from "./system/despawn";
 import Input from "./system/input"
@@ -14,6 +15,7 @@ export default class Game {
     constructor() {
         // Sytems to update entities
         this.input = new Input();
+        this.status = new Status();
         this.follow = new Follow();
         this.spawn = new Spawn();
         this.despawn = new Despawn();
@@ -30,10 +32,12 @@ export default class Game {
             this.spawn,
             this.despawn,
             this.timer,
+            this.status,
             this.follow,
             this.collision,
             this.knockback,
             this.movement,
+            this.hud,
             this.render,
             this.wave
         ];

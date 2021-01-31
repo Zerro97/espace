@@ -22,7 +22,7 @@ export default class Spawn extends System {
         // Add Enemy
         for (let i = 0; i < 10; i++) {
             entities.push(SimpleE());
-            entities.push(StraightE());
+            //entities.push(StraightE());
         }
     }
 }

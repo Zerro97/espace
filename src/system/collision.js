@@ -37,7 +37,6 @@ export default class Collision extends System {
         entities.some((entity) => {
             if (entity.playerType) {
                 if (entity.shape.type === "rectangle") {
-
                     // Return will break out of the loop
                     return this.checkRectCollision(enemy, entity);
                 }
@@ -60,15 +59,14 @@ export default class Collision extends System {
 
         // If there is collision between two entities
         if (dx1 > 0 && dy1 > 0 && dx2 > 0 && dy2 > 0) {
-            if (entity2.invisibility) {
-                entity2.invisibility.cur += 1;
-                if (entity2.invisibility.cur === 0) {
-                    entity2.health.cur -= entity1.damage.amount;
-                }
-                if (entity2.invisibility.cur === entity2.invisibility.time) {
-                    entity2.invisibility.cur = 0;
-                }
-            } else {
+            if (entity2.invisibility && !entity2.invisibility.invisible) {
+                // This initiates invisible timer in invisible system
+                entity2.invisibility.cur = 0;
+                entity2.invisibility.invisible = true;
+                entity2.health.cur -= entity1.damage.amount;
+            }
+
+            if (!entity2.invisibility) {
                 entity2.health.cur -= entity1.damage.amount;
             }
 

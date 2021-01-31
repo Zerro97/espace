@@ -1,6 +1,3 @@
-import Player from "../assemblage/player"
-import SimpleE from "../assemblage/simpleE"
-import StraightE from "../assemblage/straightE"
 import System from "./system";
 
 /**
@@ -12,6 +9,22 @@ export default class Status extends System {
     }
 
     update() {
+        entities.forEach((entity) => {
+            if (entity.invisibility) {
+                this.updateInvisible(entity);
+            }
+        })
+    }
 
+    updateInvisible(entity) {
+        if (entity.invisibility.cur < entity.invisibility.max) {
+            //console.log("in")
+            entity.invisibility.cur += 1;
+            entity.invisibility.invisible = true;
+
+            if (entity.invisibility.cur >= entity.invisibility.max) {
+                entity.invisibility.invisible = false;
+            }
+        }
     }
 }
