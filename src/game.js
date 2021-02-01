@@ -59,5 +59,6 @@ export default class Game {
         this.movement.setup();
         this.render.setup();
         this.hud.setup();
+        this.wave.setup();
     }
 }

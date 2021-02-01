@@ -16,7 +16,7 @@ export default function SimpleP() {
     projectile.addComponent(new Position());
     projectile.addComponent(new Velocity());
     projectile.addComponent(new Speed(20));
-    projectile.addComponent(new Damage(1));
+    projectile.addComponent(new Damage(5));
     projectile.addComponent(new ProjectileType());
     projectile.addComponent(new Rotation());
     projectile.addComponent(projectileShape);

@@ -1,3 +1,4 @@
+import MapData from "../assemblage/mapData";
 import Player from "../assemblage/player"
 import SimpleE from "../assemblage/simpleE"
 import StraightE from "../assemblage/straightE"
@@ -9,20 +10,29 @@ import System from "./system";
 export default class Spawn extends System {
     constructor() {
         super();
+
+        this.mapData = null;
     }
 
     update() {
+        if (!this.mapData.spawned) {
+            this.mapData.spawned = true;
 
+            let act = this.mapData.curAct;
+            let stage = this.mapData.curStage;
+            let wave = this.mapData.curWave;
+
+            entities = entities.concat(this.mapData[act][stage][wave].enemies)
+        }
     }
 
     setup() {
+        this.mapData = MapData();
+
+        // Add Map Data
+        entities.push(this.mapData);
+
         // Add player
         entities.push(Player());
-
-        // Add Enemy
-        for (let i = 0; i < 10; i++) {
-            entities.push(SimpleE());
-            //entities.push(StraightE());
-        }
     }
 }
