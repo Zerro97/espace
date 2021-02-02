@@ -1,5 +1,6 @@
 import MapData from "../assemblage/mapData";
 import Player from "../assemblage/player"
+import Scene from "../assemblage/scene";
 import SimpleE from "../assemblage/simpleE"
 import StraightE from "../assemblage/straightE"
 import System from "./system";
@@ -28,6 +29,9 @@ export default class Spawn extends System {
 
     setup() {
         this.mapData = MapData();
+
+        // Add Scene Data
+        entities.push(Scene())
 
         // Add Map Data
         entities.push(this.mapData);

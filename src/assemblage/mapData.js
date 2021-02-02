@@ -28,7 +28,7 @@ export default function MapData() {
                     "enemies": [new SimpleE(), new SimpleE(), new SimpleE(), new SimpleE()]
                 },
                 "1": {
-                    "enemies": [new SimpleE(), new SimpleE(), new SimpleE(), new SimpleE(), new SimpleE(), new SimpleE()]
+                    "enemies": [new SimpleE(), new SimpleE()]
                 },
             },
             "1": {
@@ -37,15 +37,15 @@ export default function MapData() {
                     "size": { "width": 2000, "height": 2000 }
                 },
                 "reward": ["Item1", "Item2"],
-                "last": 1,
+                "last": 3,
                 "0": {
-                    "enemies": [new SimpleE(), new SimpleE(), new SimpleE(), new SimpleE()]
+                    "enemies": [new StraightE(), new StraightE(), new StraightE()]
                 },
                 "1": {
-                    "enemies": [new SimpleE(), new SimpleE(), new SimpleE(), new SimpleE(), new SimpleE(), new SimpleE()]
+                    "enemies": [new SimpleE(), new SimpleE()]
                 },
                 "2": {
-                    "enemies": [new StraightE(), new StraightE(), new SimpleE(), new SimpleE(), new SimpleE(), new SimpleE()]
+                    "enemies": [new StraightE(), new StraightE()]
                 },
                 "3": {
                     "enemies": [new StraightE(), new StraightE(), new StraightE(), new StraightE(), new SimpleE(), new SimpleE(), new SimpleE(), new SimpleE()]

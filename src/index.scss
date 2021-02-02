@@ -22,6 +22,41 @@ h6 {
     margin: 0px;
 }
 
+/* MAIN MENU */
+.menu{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.menu__container {
+	z-index: 100;
+}
+
+.menu__title {
+	font-size: 60px;
+	text-align: center;
+	color: white;
+}
+
+.menu__text {
+	font-size: 25px;
+	text-align: center;
+	color: white;
+}
+
+.menu__text:hover {
+	color: "#aaa";
+	cursor: pointer;
+}
+
+#menu__canvas {
+	position: absolute;
+}
+
+/* GAME */
 #main {
     height: 100vh;
     position: relative;

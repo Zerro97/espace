@@ -59,6 +59,10 @@ export default class Input extends System {
                 }
             }
 
+            if(e.key === "m") {
+                
+            }
+
             // this.filteredEntities.forEach((entity) => {
             //       if (entity.keyInput !== undefined && !entity.keyInput.keys.includes(e.key)) {
             //           entity.keyInput.keys.push(e.key);

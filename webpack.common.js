@@ -1,5 +1,20 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+let htmlPageNames = ['menu'];
+let multipleHtmlPlugins = htmlPageNames.map(name => {
+  return new HtmlWebpackPlugin({
+    template: `./src/${name}.html`, // relative path to the HTML files
+    filename: `${name}.html`, // output HTML files
+    chunks: [`${name}`] // respective JS files
+  })
+});
+
+
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    menu:  "./src/menu.js",
+    index:  "./src/index.js",
+  },
   module: {
     rules: [{
         test: /\.m?js$/,
@@ -27,4 +42,5 @@ module.exports = {
       },
     ]
   },
+  plugins: multipleHtmlPlugins
 }

@@ -23,7 +23,7 @@ export default function Player() {
     player.addComponent(new PlayerType());
     player.addComponent(new Invisibility());
     player.addComponent(new Health());
-    player.addComponent(new Fire());
+    player.addComponent(new Fire(2));
     player.addComponent(new Rotation());
     player.addComponent(new Position(0, 0));
     player.addComponent(new KeyInput());
