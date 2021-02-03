@@ -9,7 +9,8 @@ const FollowType = {
     STRAIGHT: "straight",
     OSCILLATE: "oscillate",
     APPROACH: "approach",
-    TELEPORT: "teleport"
+    TELEPORT: "teleport",
+    RANDOM: "random"
 }
 
 export { ShapeType, FollowType }

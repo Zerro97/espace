@@ -21,7 +21,7 @@ export default function StraightE() {
     let pos = getRandomPos();
     enemy.addComponent(new Position(pos.x, pos.y));
     enemy.addComponent(new Health());
-    enemy.addComponent(new Timer());
+    enemy.addComponent(new Timer(100));
     enemy.addComponent(new Velocity());
     enemy.addComponent(new Speed(7));
     enemy.addComponent(new Knockback());

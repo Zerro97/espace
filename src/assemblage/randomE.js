@@ -6,23 +6,27 @@ import Position from "../component/position";
 import Knockback from "../component/movement/knockback";
 import Velocity from "../component/movement/velocity";
 import Follow from "../component/movement/follow";
+import Timer from "../component/timer";
+import EnemyPhase from "../component/enemyPhase";
 import Health from "../component/health";
 import { getRandomPos } from "../util/helperFunc";
 import EnemyType from "../component/type/enemyType";
 
-export default function SimpleE() {
-    let enemyShape = new Shape("RECTANGLE", "red");
-    enemyShape.width = 15;
-    enemyShape.height = 15;
+export default function RandomE() {
+    let enemyShape = new Shape("RECTANGLE", "brown");
+    enemyShape.width = 25;
+    enemyShape.height = 25;
 
-    let enemy = new Entity("SimpleE");
+    let enemy = new Entity("RandomE");
     let pos = getRandomPos();
     enemy.addComponent(new Position(pos.x, pos.y));
     enemy.addComponent(new Health(5));
+    enemy.addComponent(new Timer(50,200));
     enemy.addComponent(new Velocity());
-    enemy.addComponent(new Speed(1));
+    enemy.addComponent(new Speed(5));
     enemy.addComponent(new Knockback());
-    enemy.addComponent(new Follow("SIMPLE"));
+    enemy.addComponent(new Follow("RANDOM"));
+    enemy.addComponent(new EnemyPhase({ "rest": true, "move": false }));
     enemy.addComponent(new Damage());
     enemy.addComponent(new EnemyType());
     enemy.addComponent(enemyShape);

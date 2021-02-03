@@ -7,6 +7,20 @@ const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+let htmlPageNames = ['index', 'dashboard', 'main'];
+let multipleHtmlPlugins = htmlPageNames.map(name => {
+  return new HtmlWebpackPlugin({
+    template: `./src/${name}.html`, // relative path to the HTML files
+    filename: `${name}.html`, // output HTML files
+    chunks: [`${name}`], // respective JS files
+    minify: {
+        removeAttributeQuotes: true,
+        collapseWhitespace: true,
+        removeComments: true
+    }
+  })
+});
+
 module.exports = merge(common, {
   mode: "production",
   output: {
@@ -18,16 +32,8 @@ module.exports = merge(common, {
   },
   plugins: [
     new MiniCssExtractPlugin({filename: "[name].[contentHash].css"}),
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      template: "./src/index.html",
-      minify: {
-        removeAttributeQuotes: true,
-        collapseWhitespace: true,
-        removeComments: true
-      }
-    })
-  ],
+    new CleanWebpackPlugin()
+  ].concat(multipleHtmlPlugins),
   module: {
     rules: [
       {

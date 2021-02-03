@@ -73,7 +73,7 @@ export default class Hud {
     changeHeart() {
         let heartHTML = "";
         for (let i = 0; i < this.player.health.cur; i++) {
-            heartHTML += "<img src=\"/assets/heart.png\" class=\"heart\"></div>"
+            heartHTML += "<img src=\"../assets/heart.png\" class=\"heart\">"
         }
 
         let hearts = document.getElementById("hearts");

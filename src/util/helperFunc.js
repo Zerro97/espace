@@ -10,4 +10,8 @@ function getRandomPos() {
   return {x: Math.random()*2000-1000, y: Math.random()*2000-1000}
 }
 
-export { getUnitVector, getRandomPos };
+function isOutOfMap(x, y, mapWidth, mapHeight) {
+    return x < -mapWidth/2 || x > mapWidth/2 || y < -mapHeight/2 || y > mapHeight/2
+}
+
+export { getUnitVector, getRandomPos, isOutOfMap };

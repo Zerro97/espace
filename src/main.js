@@ -1,4 +1,5 @@
 import './main.scss';
+import '../assets/heart.png';
 import Game from './game';
 
 // Make a full screen size canvas in html file

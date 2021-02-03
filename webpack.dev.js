@@ -27,6 +27,6 @@ module.exports = merge(common, {
         "css-loader",
         "sass-loader"
       ]
-    }, ]
+    }]
   }
 });
