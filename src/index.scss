@@ -1,28 +1,5 @@
-html {
-    box-sizing: border-box;
-}
+@import "./scaffolding.scss";
 
-body {
-    margin: 0px;
-    padding: 0px;
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin: 0px;
-}
-
-/* MAIN MENU */
 .menu{
 	width: 100vw;
 	height: 100vh;
@@ -36,124 +13,30 @@ h6 {
 }
 
 .menu__title {
-	font-size: 60px;
+	font-size: 80px;
 	text-align: center;
 	color: white;
+}
+
+.menu__link {
+    text-decoration: none;
 }
 
 .menu__text {
 	font-size: 25px;
 	text-align: center;
-	color: white;
+    color: white;
+    margin-top: 10px;
 }
 
 .menu__text:hover {
-	color: "#aaa";
+    transition: color 0.2s;
+    color: #888;
 	cursor: pointer;
 }
 
 #menu__canvas {
-	position: absolute;
-}
-
-/* GAME */
-#main {
-    height: 100vh;
-    position: relative;
-}
-
-#canvas {
     position: absolute;
     z-index: -1;
 }
 
-#hud {
-    width: 100vw;
-    background-color: rgb(0, 0, 0);
-    opacity: 0.8;
-    z-index: 100;
-    padding: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#hearts {
-    padding: 5px;
-}
-
-.heart {
-    width: 30px;
-    height: 30px;
-    opacity: 1;
-    margin: 0px 3px;
-}
-
-#loadBullet {
-    width: 180px;
-    height: 35px;
-    border-radius: 5px;
-    background-color: #eee;
-    margin: 20px;
-    padding: 3px;
-    box-shadow: 0px 0px 10px black;
-}
-
-#bulletProgress {
-    width: 100%;
-    height: 100%;
-    background-color: #396db3;
-    border-radius: 5px;
-}
-
-#loadSkill {
-    width: 180px;
-    height: 35px;
-    border-radius: 5px;
-    border: #eee 3px solid;
-    margin: 20px;
-    display: none;
-    box-shadow: 0px 0px 10px black;
-}
-
-#skillProgress {
-    width: 100%;
-    height: 100%;
-    background-color: #37b358;
-}
-
-#waveNotify {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-#stageNotify {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-#fsNotify {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    opacity: 0.5;
-}
-
-#fsText {
-    color: white;
-    font-size: 50px;
-}
-
-#damaged {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    box-shadow: inset 0 0 80px red;
-    display: none;
-}
