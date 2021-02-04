@@ -74,7 +74,10 @@ export default class Movement extends System {
         entities.forEach((entity) => {
             if (entity.name !== "player" && entity.position && entity.velocity) {
                 entity.position.x += entity.velocity.x;
-                entity.position.y += entity.velocity.y
+                entity.position.y += entity.velocity.y;
+                if (entity.name === "GunnerE") {
+                    //console.log("Gunner position", entity.position.x);
+                }
             }
         })
     }

@@ -1,6 +1,9 @@
 import SimpleE from "./simpleE";
 import RandomE from "./randomE";
 import SmallE from "./smallE";
+import ReflectE from "./reflectE";
+import GunnerE from "./gunnerE";
+import BigE from "./bigE";
 import StraightE from "./straightE";
 
 /**
@@ -27,7 +30,8 @@ export default function MapData() {
                 "reward": ["Item1", "Item2"],
                 "last": 1,
                 "0": {
-                    "enemies": [new RandomE(), new SimpleE(), new SmallE(), new RandomE(), new RandomE(), new RandomE(), new RandomE(), new SimpleE()]
+                    //"enemies": [new GunnerE(), new GunnerE(), new GunnerE()]
+                    "enemies": [new StraightE(), new StraightE(), new RandomE(), new GunnerE(), new GunnerE(), new GunnerE(), new GunnerE(), new BigE(), new SmallE(), new ReflectE(), new ReflectE(), new RandomE(), new RandomE(), new RandomE(), new RandomE(), new SimpleE()]
                 },
                 "1": {
                     "enemies": [new SimpleE(), new SimpleE()]

@@ -7,9 +7,14 @@ export default class Collision extends System {
 
     update() {
         entities.forEach((entity) => {
-            // Do collision check for projectile
+            // Do collision check for player projectile
             if (entity.projectileType) {
                 this.checkProjectile(entity);
+            }
+
+            // Do collision check for enemy projectile
+            if (entity.enemyProjectileType) {
+                this.checkEnemyProjectile(entity);
             }
 
             // Do collision check for enemy
@@ -24,6 +29,19 @@ export default class Collision extends System {
         // Used some instead of foreach to break out of loop
         entities.some((entity) => {
             if (entity.enemyType) {
+                if (entity.shape.type === "rectangle") {
+                    // Return will break out of the loop
+                    return this.checkRectCollision(projectile, entity);
+                }
+            }
+        })
+    }
+
+    checkEnemyProjectile(projectile) {
+        // Get enemy entities
+        // Used some instead of foreach to break out of loop
+        entities.some((entity) => {
+            if (entity.playerType) {
                 if (entity.shape.type === "rectangle") {
                     // Return will break out of the loop
                     return this.checkRectCollision(projectile, entity);
@@ -59,8 +77,9 @@ export default class Collision extends System {
 
         // If there is collision between two entities
         if (dx1 > 0 && dy1 > 0 && dx2 > 0 && dy2 > 0) {
+            // If the entity has invisibility counter
             if (entity2.invisibility && !entity2.invisibility.invisible) {
-                // This initiates invisible timer in invisible system
+                // This initiates timer in invisible system
                 entity2.invisibility.cur = 0;
                 entity2.invisibility.invisible = true;
                 entity2.health.cur -= entity1.damage.amount;
@@ -71,13 +90,21 @@ export default class Collision extends System {
             }
 
 
-            entity2.knockback.timerCur = 0;
+            // If entity has knockback component
+            if (entity2.knockback) {
+                entity2.knockback.timerCur = 0;
 
-            entity2.knockback.x = entity1.velocity.x / entity1.speed.max;
-            entity2.knockback.y = entity1.velocity.y / entity1.speed.max;
+                entity2.knockback.x = entity1.velocity.x / entity1.speed.max;
+                entity2.knockback.y = entity1.velocity.y / entity1.speed.max;
+            }
+
 
             if (entity1.projectileType) {
                 entity1.projectileType.collideCur -= 1;
+            }
+
+            if (entity1.enemyProjectileType) {
+                entity1.enemyProjectileType.collideCur -= 1;
             }
 
             if (entity1.enemyType) {
@@ -86,6 +113,11 @@ export default class Collision extends System {
         }
 
         if (entity1.projectileType && entity1.projectileType.collideCur <= 0) {
+            // Break out of loop if it hit one enemy
+            return true;
+        }
+
+        if (entity1.enemyProjectileType && entity1.enemyProjectileType.collideCur <= 0) {
             // Break out of loop if it hit one enemy
             return true;
         }

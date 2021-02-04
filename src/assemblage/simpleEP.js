@@ -5,19 +5,19 @@ import Speed from "../component/movement/speed";
 import Position from "../component/position";
 import Rotation from "../component/movement/rotation";
 import Velocity from "../component/movement/velocity";
-import ProjectileType from "../component/type/projectileType";
+import EnemyProjectileType from "../component/type/enemyProjectileType";
 
-export default function SimpleP() {
-    let projectileShape = new Shape("RECTANGLE", "green");
+export default function SimpleEP() {
+    let projectileShape = new Shape("RECTANGLE", "red");
     projectileShape.width = 3;
     projectileShape.height = 20;
 
-    let projectile = new Entity("simpleP");
+    let projectile = new Entity("simpleEP");
     projectile.addComponent(new Position());
     projectile.addComponent(new Velocity());
-    projectile.addComponent(new Speed(20));
+    projectile.addComponent(new Speed(5));
     projectile.addComponent(new Damage(1));
-    projectile.addComponent(new ProjectileType());
+    projectile.addComponent(new EnemyProjectileType());
     projectile.addComponent(new Rotation());
     projectile.addComponent(projectileShape);
 

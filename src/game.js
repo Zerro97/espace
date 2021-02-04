@@ -9,6 +9,7 @@ import Follow from "./system/follow"
 import Hud from "./system/hud"
 import Wave from "./system/wave";
 import Timer from "./system/timer";
+import EnemyFire from "./system/enemyFire";
 import Knockback from "./system/knockback";
 
 export default class Game {
@@ -25,6 +26,7 @@ export default class Game {
         this.hud = new Hud();
         this.wave = new Wave();
         this.collision = new Collision();
+        this.enemyFire = new EnemyFire();
         this.timer = new Timer();
 
         // Order of systems are critical
@@ -34,6 +36,7 @@ export default class Game {
             this.timer,
             this.status,
             this.follow,
+            this.enemyFire,
             this.collision,
             this.knockback,
             this.movement,

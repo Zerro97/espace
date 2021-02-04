@@ -24,8 +24,13 @@ export default class Despawn extends System {
                 }
             }
 
-            // Check if bullet has reached maximum collision occurence
+            // Check if player bullet has reached maximum collision occurence
             if (entity.projectileType && entity.projectileType.collideCur <= 0) {
+                return false;
+            }
+
+            // Check if enemy bullet has reached maximum collision occurence
+            if (entity.enemyProjectileType && entity.enemyProjectileType.collideCur <= 0) {
                 return false;
             }
 

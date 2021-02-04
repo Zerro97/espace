@@ -71,7 +71,7 @@ export default class Render extends System {
                     ctx.fillRect(entity.position.x - entity.shape.width / 2, entity.position.y - entity.shape.height / 2, entity.shape.width, entity.shape.height)
 
                     // Draw health bar
-                    if (!entity.playerType && !entity.projectileType) {
+                    if (!entity.playerType && !entity.projectileType && !entity.enemyProjectileType) {
                         ctx.fillStyle = "white";
                         ctx.fillRect(entity.position.x - 25, entity.position.y - entity.shape.height / 2 - 40 / 2, 50, 10)
 

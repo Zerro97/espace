@@ -10,7 +10,12 @@ const FollowType = {
     OSCILLATE: "oscillate",
     APPROACH: "approach",
     TELEPORT: "teleport",
+    REFLECT: "reflect",
     RANDOM: "random"
 }
 
-export { ShapeType, FollowType }
+const BulletType = {
+    SIMPLE: "simple",
+}
+
+export { ShapeType, FollowType, BulletType }

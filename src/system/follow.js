@@ -1,5 +1,5 @@
 import System from "./system";
-import { getUnitVector, isOutOfMap } from "../util/helperFunc"
+import { getDistance, getUnitVector, isOutOfMap } from "../util/helperFunc"
 
 export default class Follow extends System {
     constructor() {
@@ -10,7 +10,7 @@ export default class Follow extends System {
 
     setup() {
         entities.forEach((entity) => {
-            if(entity.name === "player") {
+            if (entity.name === "player") {
                 this.player = entity;
             }
             if (entity.name === "mapData") {
@@ -28,6 +28,10 @@ export default class Follow extends System {
                     this.straightFollow(entity);
                 } else if (entity.follow.type === "random") {
                     this.randomFollow(entity);
+                } else if (entity.follow.type === "reflect") {
+                    this.reflectFollow(entity);
+                } else if (entity.follow.type === "approach") {
+                    this.approachFollow(entity);
                 }
             }
         })
@@ -57,7 +61,7 @@ export default class Follow extends System {
                     entity.timer.cur = 0;
                 }
             }
-        } 
+        }
         // When enemy is moving
         else if (entity.enemyPhase.phase.move) {
             if (entity.enemyPhase.phase.switchDir) {
@@ -109,26 +113,26 @@ export default class Follow extends System {
                     entity.enemyPhase.phase.move = true;
                     entity.timer.cur = 0;
 
-                    let vector = getUnitVector(0, 0, Math.random()-0.5, Math.random()-0.5);
+                    let vector = getUnitVector(0, 0, Math.random() - 0.5, Math.random() - 0.5);
                     entity.velocity.x = vector.xunit * entity.speed.max;
                     entity.velocity.y = vector.yunit * entity.speed.max;
                 }
             }
-        } 
+        }
 
         // When enemy is moving
         else if (entity.enemyPhase.phase.move) {
             if (entity.timer.cur < entity.timer.max2) {
                 entity.timer.cur += 1;
 
-                if(entity.position.x < -this.mapData[this.mapData.curAct][this.mapData.curStage].map.size.width/2 ||
-                    entity.position.x > this.mapData[this.mapData.curAct][this.mapData.curStage].map.size.width/2) {
-                        entity.velocity.x = -entity.velocity.x;
+                if (entity.position.x < -this.mapData[this.mapData.curAct][this.mapData.curStage].map.size.width / 2 ||
+                    entity.position.x > this.mapData[this.mapData.curAct][this.mapData.curStage].map.size.width / 2) {
+                    entity.velocity.x = -entity.velocity.x;
                 }
 
-                if(entity.position.y < -this.mapData[this.mapData.curAct][this.mapData.curStage].map.size.height/2 ||
-                    entity.position.y > this.mapData[this.mapData.curAct][this.mapData.curStage].map.size.height/2) {
-                        entity.velocity.y = -entity.velocity.y;
+                if (entity.position.y < -this.mapData[this.mapData.curAct][this.mapData.curStage].map.size.height / 2 ||
+                    entity.position.y > this.mapData[this.mapData.curAct][this.mapData.curStage].map.size.height / 2) {
+                    entity.velocity.y = -entity.velocity.y;
                 }
 
                 if (entity.timer.cur === entity.timer.max2) {
@@ -137,6 +141,29 @@ export default class Follow extends System {
                     entity.timer.cur = 0;
                 }
             }
+        }
+    }
+
+    reflectFollow(entity) {
+        if (entity.position.x < -this.mapData[this.mapData.curAct][this.mapData.curStage].map.size.width / 2 ||
+            entity.position.x > this.mapData[this.mapData.curAct][this.mapData.curStage].map.size.width / 2) {
+            entity.velocity.x = -entity.velocity.x;
+        }
+
+        if (entity.position.y < -this.mapData[this.mapData.curAct][this.mapData.curStage].map.size.height / 2 ||
+            entity.position.y > this.mapData[this.mapData.curAct][this.mapData.curStage].map.size.height / 2) {
+            entity.velocity.y = -entity.velocity.y;
+        }
+    }
+
+    approachFollow(entity) {
+        if (getDistance(entity.position.x, entity.position.y, this.player.position.x, this.player.position.y) < 250) {
+            entity.velocity.x = 0;
+            entity.velocity.y = 0;
+        } else {
+            let vector = getUnitVector(entity.position.x, entity.position.y, this.player.position.x, this.player.position.y);
+            entity.velocity.x = vector.xunit * entity.speed.max;
+            entity.velocity.y = vector.yunit * entity.speed.max;
         }
     }
 }
