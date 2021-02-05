@@ -16,6 +16,7 @@ const FollowType = {
 
 const BulletType = {
     SIMPLE: "simple",
+    EIGHT: "eight",
 }
 
 export { ShapeType, FollowType, BulletType }

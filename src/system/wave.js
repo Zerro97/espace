@@ -19,6 +19,10 @@ export default class Wave extends System {
     }
 
     update() {
+        if (this.mapData[this.mapData.curAct][this.mapData.curStage].last === 0) {
+            this.last = true;
+        }
+
         // Increment wave if enemies are less than 3
         if (!this.last && this.countEnemies() < 3) {
             if (this.timer === 0) {
@@ -31,9 +35,9 @@ export default class Wave extends System {
                     this.last = true;
                 }
             }
-        } 
+        }
         // Increment stage when clearing all enemies at last wave
-        else if(this.last && this.countEnemies() === 0) {
+        else if (this.last && this.countEnemies() === 0) {
             this.last = false;
             this.mapData.spawned = false;
             this.display = true;

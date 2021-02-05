@@ -2,13 +2,16 @@ import Component from "./component";
 import { BulletType } from "../util/types"
 
 /**
- * Status/phase of enemy, ie. for straight enemy, it's either at resting or moving phase
+ * Defines how enemy fires bullets and what kind bullet they fire
+ * Type List: simple, eight
+ * Bullet List: simpleEP, powerEP
+ * 
  */
 export default class enemyFire extends Component {
-    constructor(type) {
+    constructor(type, bullet) {
         super("enemyFire");
 
-        this.type = BulletType[type] || "simple";
-        this.isFiring = false;
+        this.type = type || ["simple"];
+        this.bullet = bullet || { "simple": "simpleEP" };
     }
 }

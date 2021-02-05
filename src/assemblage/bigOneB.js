@@ -13,24 +13,23 @@ import EnemyType from "../component/type/enemyType";
 import EnemyFire from "../component/enemyFire";
 import EnemyPhase from "../component/enemyPhase";
 
-export default function GunnerE() {
-    let enemyShape = new Shape("RECTANGLE", "#013552");
-    enemyShape.width = 15;
-    enemyShape.height = 15;
+export default function BigOneB() {
+    let enemyShape = new Shape("RECTANGLE", "#873d3d");
+    enemyShape.width = 150;
+    enemyShape.height = 150;
 
-    let enemy = new Entity("GunnerE");
+    let enemy = new Entity("BigOneB");
     let pos = getRandomPos();
     enemy.addComponent(new Position(pos.x, pos.y));
-    enemy.addComponent(new Health(5));
-    enemy.addComponent(new Timer(100));
-    enemy.addComponent(new EnemyPhase({ "firing": true }));
+    enemy.addComponent(new Health(30));
+    enemy.addComponent(new Timer(50));
+    enemy.addComponent(new EnemyPhase({ "firing": true, "switchFire": Math.random() < 0.5 }));
     enemy.addComponent(new Velocity());
-    enemy.addComponent(new Speed(2));
-    enemy.addComponent(new Knockback());
-    enemy.addComponent(new Follow("APPROACH"));
+    enemy.addComponent(new Speed(0.3));
+    enemy.addComponent(new Follow("FOLLOW"));
     enemy.addComponent(new Damage());
     enemy.addComponent(new EnemyType());
-    enemy.addComponent(new EnemyFire(["simple"], { "simple": "simpleEP" }));
+    enemy.addComponent(new EnemyFire(["simple", "eight"], { "simple": "powerEP", "eight": "simpleEP" }));
     enemy.addComponent(enemyShape);
 
     return enemy;

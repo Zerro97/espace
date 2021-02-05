@@ -5,6 +5,7 @@ import ReflectE from "./reflectE";
 import GunnerE from "./gunnerE";
 import BigE from "./bigE";
 import StraightE from "./straightE";
+import BigOneB from "./bigOneB";
 
 /**
  * Contains information about what enemies, how many waves, how many stages, how many acts are there.
@@ -28,14 +29,14 @@ export default function MapData() {
                     "size": { "width": 2000, "height": 2000 }
                 },
                 "reward": ["Item1", "Item2"],
-                "last": 1,
+                "last": 0,
                 "0": {
-                    //"enemies": [new GunnerE(), new GunnerE(), new GunnerE()]
-                    "enemies": [new StraightE(), new StraightE(), new RandomE(), new GunnerE(), new GunnerE(), new GunnerE(), new GunnerE(), new BigE(), new SmallE(), new ReflectE(), new ReflectE(), new RandomE(), new RandomE(), new RandomE(), new RandomE(), new SimpleE()]
+                    "enemies": [new BigOneB()]
+                        //"enemies": [new StraightE(), new StraightE(), new RandomE(), new GunnerE(), new GunnerE(), new GunnerE(), new GunnerE(), new BigE(), new SmallE(), new ReflectE(), new ReflectE(), new RandomE(), new RandomE(), new RandomE(), new RandomE(), new SimpleE()]
                 },
-                "1": {
-                    "enemies": [new SimpleE(), new SimpleE()]
-                },
+                // "1": {
+                //     "enemies": [new BigOneB()]
+                // },
             },
             "1": {
                 "theme": "simple",
