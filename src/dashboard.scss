@@ -39,9 +39,12 @@
 
 .dashboard__main {
     width: 100%;
-    padding: 20px 60px 20px 60px;
     display: flex;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
     flex-direction: column;
+    transition: opacity 0.5s;
 }
 
 .top {
@@ -184,7 +187,7 @@
     margin: 5px 0px;
 }
 
-.map {
+.status__map {
     width: 100%;
 }
 
@@ -216,10 +219,83 @@
     transition: background-color 0.4s;
 }
 
-.activeLink {
-    color: "#5a7edb";
+// EQUIPMENT
+.equip {
+    padding: 10px;
+    background-color: #192647;
+    border-radius: 10px;
+    display: flex;
 }
 
-.hide {
-    display: none;
+.equip__left {
+    margin-right: 30px;
+}
+
+.equip__top {
+    width: 100%;
+    min-width: 550px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0px 0px 5px 0px;
+    margin: 0px;
+    //border-bottom: white solid 2px;
+}
+
+.equip__title {
+    color: white;
+    font-size: 22px;
+    //margin-right: 40px;
+}
+
+#equip__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.equip__box {
+    width: 60px;
+    height: 60px;
+    background-color: #0e172e;
+    border: #ccc solid 1px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.equip__box:hover {
+    background-color: #192646;
+    cursor: pointer;
+}
+
+.equip__box:active {
+    background-color: red;
+}
+
+.equip__right {
+    display: flex;
+    border-left: white solid 2px;
+    padding: 0px 50px;
+}
+
+.equip__description {
+    color: white;
+}
+
+.map {
+    width: 100%;
+    height: 85vh;
+    margin-top: 10px;
+    background-color: black;
+    border-radius: 5px;
+}
+
+.activeLink {
+    color: #5a7edb;
+}
+
+.show {
+    height: auto;
+    padding: 20px 60px 20px 60px;
+    opacity: 1;
 }

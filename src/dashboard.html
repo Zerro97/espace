@@ -6,20 +6,20 @@
 </head>
 
 <body>
-    <div class="dashboard" id="statusPage">
+    <div class="dashboard">
         <div class="dashboard__top">
             <div class="dashboard__menu">
                 <img class="dashboard__logo" src="../assets/logo.png">
                 <div class="dashboard__menuContainer">
-                    <h1 class="dashboard__menuText">STATUS</h1>
-                    <h1 class="dashboard__menuText">EQUIPMENT</h1>
-                    <h1 class="dashboard__menuText">MAP</h1>
+                    <h1 class="dashboard__menuText activeLink" name="statusPage">STATUS</h1>
+                    <h1 class="dashboard__menuText" name="equipmentPage">EQUIPMENT</h1>
+                    <h1 class="dashboard__menuText" name="mapPage">MAP</h1>
                 </div>
             </div>
         </div>
 
         <!-- Status Page -->
-        <div class="dashboard__main">
+        <div class="dashboard__main show" id="statusPage">
             <div class="top">
                 <div class="top__left">
                     <div class="top__titleBox">
@@ -104,7 +104,7 @@
                             <div class="equipment__stat"></div>
                         </div>
                     </div>
-                    <div class="map">
+                    <div class="status__map">
                         <div class="map__box"></div>
                         <a href="./main.html" class="dashboard__start">START</a>
                     </div>
@@ -114,12 +114,29 @@
 
         <!-- Equipment Page -->
         <div class="dashboard__main" id="equipmentPage">
-
+            <div class="equip">
+                <div class="equip__left">
+                    <div class="equip__top">
+                        <h2 class="equip__title">WEAPONS</h2>
+                        <h2 class="equip__title">ARMOR</h2>
+                        <h2 class="equip__title">ENGINE</h2>
+                        <h2 class="equip__title">ARTIFACTS</h2>
+                    </div>
+                    <div id="equip__container"></div>
+                </div>
+                <div class="equip__right">
+                    <p class="equip__description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                        passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                </div>
+            </div>
         </div>
 
         <!-- Map Page -->
         <div class="dashboard__main" id="mapPage">
+            <div class="map">
 
+            </div>
         </div>
     </div>
 </body>
