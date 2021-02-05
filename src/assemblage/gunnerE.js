@@ -12,6 +12,7 @@ import { getRandomPos } from "../util/helperFunc";
 import EnemyType from "../component/type/enemyType";
 import EnemyFire from "../component/enemyFire";
 import EnemyPhase from "../component/enemyPhase";
+import DamageDisplay from "../component/damageDisplay";
 
 export default function GunnerE() {
     let enemyShape = new Shape("RECTANGLE", "#013552");
@@ -25,6 +26,7 @@ export default function GunnerE() {
     enemy.addComponent(new Timer(100));
     enemy.addComponent(new EnemyPhase({ "firing": true }));
     enemy.addComponent(new Velocity());
+    enemy.addComponent(new DamageDisplay());
     enemy.addComponent(new Speed(2));
     enemy.addComponent(new Knockback());
     enemy.addComponent(new Follow("APPROACH"));

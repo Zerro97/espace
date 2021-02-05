@@ -9,6 +9,7 @@ import Follow from "../component/movement/follow";
 import Health from "../component/health";
 import { getRandomPos } from "../util/helperFunc";
 import EnemyType from "../component/type/enemyType";
+import DamageDisplay from "../component/damageDisplay";
 
 export default function ReflectE() {
     let enemyShape = new Shape("RECTANGLE", "green");
@@ -22,6 +23,7 @@ export default function ReflectE() {
     enemy.addComponent(new Velocity(5, 5));
     enemy.addComponent(new Speed(5));
     enemy.addComponent(new Knockback());
+    enemy.addComponent(new DamageDisplay());
     enemy.addComponent(new Follow("REFLECT"));
     enemy.addComponent(new Damage());
     enemy.addComponent(new EnemyType());

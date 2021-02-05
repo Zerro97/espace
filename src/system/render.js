@@ -72,12 +72,21 @@ export default class Render extends System {
 
                     // Draw health bar
                     if (!entity.playerType && !entity.projectileType && !entity.enemyProjectileType) {
-                        ctx.fillStyle = "white";
-                        ctx.fillRect(entity.position.x - 25, entity.position.y - entity.shape.height / 2 - 40 / 2, 50, 10)
+                        this.drawHealthBar(entity);
 
-                        // Reduce width according to health
-                        ctx.fillStyle = "red";
-                        ctx.fillRect(entity.position.x - 23, entity.position.y - entity.shape.height / 2 - 36 / 2, 46 * (entity.health.cur / entity.health.max), 6)
+                    }
+
+                    // Draw damage amount
+                    if (entity.damageDisplay && entity.damageDisplay.collided && !entity.projectileType && !entity.enemyProjectileType) {
+                        this.drawDamageCount(entity);
+                        entity.damageDisplay.timerCur++;
+                        entity.damageDisplay.y--;
+
+                        if (entity.damageDisplay.timerCur === entity.damageDisplay.timerMax) {
+                            entity.damageDisplay.collided = false;
+                            entity.damageDisplay.timerCur = 0;
+                            entity.damageDisplay.y = 0;
+                        }
                     }
 
                 } else if (entity.shape.type === "circle") {
@@ -92,5 +101,23 @@ export default class Render extends System {
                 ctx.restore();
             }
         })
+    }
+
+    drawHealthBar(entity) {
+        ctx.fillStyle = "white";
+        ctx.fillRect(entity.position.x - 25, entity.position.y - entity.shape.height / 2 - 40 / 2, 50, 10)
+
+        // Reduce width according to health
+        ctx.fillStyle = "red";
+        ctx.fillRect(entity.position.x - 23, entity.position.y - entity.shape.height / 2 - 36 / 2, 46 * (entity.health.cur / entity.health.max), 6)
+    }
+
+    drawDamageCount(entity) {
+        // Get digit length multiplied by half of font size
+        let xOffset = Math.log(entity.damageDisplay.damageAmount) / Math.log(10) * 10;
+
+        ctx.fillStyle = entity.damageDisplay.color;
+        ctx.font = "20px Arial";
+        ctx.fillText(entity.damageDisplay.damageAmount, entity.position.x - xOffset, entity.position.y - entity.shape.height / 2 - 40 + entity.damageDisplay.y);
     }
 }

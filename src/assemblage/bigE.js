@@ -9,6 +9,7 @@ import Follow from "../component/movement/follow";
 import Health from "../component/health";
 import { getRandomPos } from "../util/helperFunc";
 import EnemyType from "../component/type/enemyType";
+import DamageDisplay from "../component/damageDisplay";
 
 export default function BigE() {
     let enemyShape = new Shape("RECTANGLE", "red");
@@ -20,6 +21,7 @@ export default function BigE() {
     enemy.addComponent(new Position(pos.x, pos.y));
     enemy.addComponent(new Health(15));
     enemy.addComponent(new Velocity());
+    enemy.addComponent(new DamageDisplay());
     enemy.addComponent(new Speed(1));
     enemy.addComponent(new Knockback());
     enemy.addComponent(new Follow("SIMPLE"));

@@ -11,7 +11,7 @@ export default class knockback extends Component {
         this.x = 1;
         this.y = 0;
 
-        // Testing
+        // Timer for knockback: stops knockback after 10 frame
         this.timerMax = 10;
         this.timerCur = 10;
     }

@@ -77,16 +77,31 @@ export default class Collision extends System {
 
         // If there is collision between two entities
         if (dx1 > 0 && dy1 > 0 && dx2 > 0 && dy2 > 0) {
+
             // If the entity has invisibility counter
             if (entity2.invisibility && !entity2.invisibility.invisible) {
                 // This initiates timer in invisible system
                 entity2.invisibility.cur = 0;
                 entity2.invisibility.invisible = true;
                 entity2.health.cur -= entity1.damage.amount;
+
+                // Triger rendering damage amount
+                if (entity2.damageDisplay) {
+                    entity2.damageDisplay.collided = true;
+                    entity2.damageDisplay.damageAmount = entity1.damage.amount;
+                    //entity2.damageDisplay.color = Math.random() < 0.5 ? "#ffe0a6" : "#ffa9a3";
+                }
             }
 
             if (!entity2.invisibility) {
                 entity2.health.cur -= entity1.damage.amount;
+
+                // Triger rendering damage amount
+                if (entity2.damageDisplay) {
+                    entity2.damageDisplay.collided = true;
+                    entity2.damageDisplay.damageAmount = entity1.damage.amount;
+                    //entity2.damageDisplay.color = Math.random() < 0.5 ? "#ffe0a6" : "#ffa9a3";
+                }
             }
 
 

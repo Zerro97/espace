@@ -31,8 +31,8 @@ export default function MapData() {
                 "reward": ["Item1", "Item2"],
                 "last": 0,
                 "0": {
-                    "enemies": [new BigOneB()]
-                        //"enemies": [new StraightE(), new StraightE(), new RandomE(), new GunnerE(), new GunnerE(), new GunnerE(), new GunnerE(), new BigE(), new SmallE(), new ReflectE(), new ReflectE(), new RandomE(), new RandomE(), new RandomE(), new RandomE(), new SimpleE()]
+                    //"enemies": [new BigOneB()]
+                    "enemies": [new StraightE(), new StraightE(), new RandomE(), new GunnerE(), new GunnerE(), new GunnerE(), new GunnerE(), new BigE(), new SmallE(), new ReflectE(), new ReflectE(), new RandomE(), new RandomE(), new RandomE(), new RandomE(), new SimpleE()]
                 },
                 // "1": {
                 //     "enemies": [new BigOneB()]

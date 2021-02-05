@@ -34,7 +34,7 @@ export default function Player() {
     player.addComponent(new Velocity());
     player.addComponent(new Acceleration());
     player.addComponent(new Rotation());
-    player.addComponent(new Knockback());
+    //player.addComponent(new Knockback());
     player.addComponent(playerShape);
 
 

@@ -12,6 +12,7 @@ import { getRandomPos } from "../util/helperFunc";
 import EnemyType from "../component/type/enemyType";
 import EnemyFire from "../component/enemyFire";
 import EnemyPhase from "../component/enemyPhase";
+import DamageDisplay from "../component/damageDisplay";
 
 export default function BigOneB() {
     let enemyShape = new Shape("RECTANGLE", "#873d3d");
@@ -23,6 +24,7 @@ export default function BigOneB() {
     enemy.addComponent(new Position(pos.x, pos.y));
     enemy.addComponent(new Health(30));
     enemy.addComponent(new Timer(50));
+    enemy.addComponent(new DamageDisplay());
     enemy.addComponent(new EnemyPhase({ "firing": true, "switchFire": Math.random() < 0.5 }));
     enemy.addComponent(new Velocity());
     enemy.addComponent(new Speed(0.3));

@@ -11,6 +11,7 @@ import { getRandomPos } from "../util/helperFunc";
 import EnemyPhase from "../component/enemyPhase";
 import Timer from "../component/timer";
 import EnemyType from "../component/type/enemyType";
+import DamageDisplay from "../component/damageDisplay";
 
 export default function StraightE() {
     let enemyShape = new Shape("RECTANGLE", "blue");
@@ -23,6 +24,7 @@ export default function StraightE() {
     enemy.addComponent(new Health());
     enemy.addComponent(new Timer(100));
     enemy.addComponent(new Velocity());
+    enemy.addComponent(new DamageDisplay());
     enemy.addComponent(new Speed(7));
     enemy.addComponent(new Knockback());
     enemy.addComponent(new Follow("STRAIGHT"));
