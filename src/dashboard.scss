@@ -334,15 +334,23 @@
 }
 
 .map__stageInfo {
-    background-color:white;
-    opacity: 0.1;
+    background-color:rgba(255,255,255,0.1);
     border-radius: 5px;
-    //border: 2px black solid;
-    width: 50px;
-    height: 50px;
-    position: relative;
-    left: 50px;
-    bottom: 50px;
+    width: 300px;
+    height: 150px;
+    padding: 10px;
+    position: absolute;
+    right: 50px;
+    z-index: -1;
+    display: none;
+}
+
+.map__infoTitle{
+    color: white;
+}
+
+.map__infoDescription {
+    color: white;
 }
 
 .activeLink {
@@ -353,4 +361,8 @@
     height: auto;
     padding: 20px 60px 20px 60px;
     opacity: 1;
+}
+
+.showInfo {
+    display: block;
 }

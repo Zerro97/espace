@@ -35,7 +35,6 @@ function setUpEquipment() {
     }
 
     let equipments = document.getElementById("equip__container");
-    console.log(equipments);
     equipments.innerHTML = boxes;
 }
 
@@ -47,13 +46,25 @@ function setUpMap() {
     new Draggable(map, options);
 
     let stages = document.getElementsByClassName("map__stage");
+    let stageInfos = document.getElementsByClassName("map__stageInfo");
+    let fired = false;
+
     for(let stage of stages) {
-        stage.addEventListener("mouseover", () => {
-            stage.innerHTML = `<div class="map__stageInfo"></div>`;
+        stage.addEventListener("mouseenter", () => {
+            for (let stageInfo of stageInfos) {
+                stageInfo.className = stageInfo.className.replace(/\bshowInfo\b/g, "");
+            }
+            document.getElementById(stage.getAttribute("name")).classList.add("showInfo");
+        })
+
+        stage.addEventListener("mouseleave", () => {
+            document.getElementById(stage.getAttribute("name")).className.replace(/\bshowInfo\b/g, "");
+            for (let stageInfo of stageInfos) {
+                stageInfo.className = stageInfo.className.replace(/\bshowInfo\b/g, "");
+            }
+            console.log(document.getElementById(stage.getAttribute("name")).className)
         })
     }
-    //console.log(map);
-    //console.log(new Draggable(map));
 }
 
 
