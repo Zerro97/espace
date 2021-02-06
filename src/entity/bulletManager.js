@@ -1,6 +1,6 @@
-import SimpleP from "../assemblage/simpleP";
-import SimpleEP from "../assemblage/simpleEP";
-import PowerEP from "../assemblage/powerEP";
+import SimpleP from "../assemblage/bullets/simpleP";
+import SimpleEP from "../assemblage/bullets/simpleEP";
+import PowerEP from "../assemblage/bullets/powerEP";
 
 export default class BulletManager {
     makeBullet(name) {

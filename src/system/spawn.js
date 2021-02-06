@@ -1,7 +1,6 @@
 import MapData from "../assemblage/mapData";
 import Player from "../assemblage/player"
 import Scene from "../assemblage/scene";
-import SimpleEP from "../assemblage/simpleEP"
 import System from "./system";
 import { getUnitVector } from "../util/helperFunc"
 import BulletManager from "../entity/bulletManager";

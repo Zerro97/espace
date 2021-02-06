@@ -1,11 +1,11 @@
-import Entity from "../entity/entity";
-import Damage from "../component/damage";
-import Shape from "../component/shape";
-import Speed from "../component/movement/speed";
-import Position from "../component/position";
-import Rotation from "../component/movement/rotation";
-import Velocity from "../component/movement/velocity";
-import EnemyProjectileType from "../component/type/enemyProjectileType";
+import Entity from "../../entity/entity";
+import Damage from "../../component/damage";
+import Shape from "../../component/shape";
+import Speed from "../../component/movement/speed";
+import Position from "../../component/position";
+import Rotation from "../../component/movement/rotation";
+import Velocity from "../../component/movement/velocity";
+import EnemyProjectileType from "../../component/type/enemyProjectileType";
 
 export default function SimpleEP() {
     let projectileShape = new Shape("RECTANGLE", "red");

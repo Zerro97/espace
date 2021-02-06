@@ -1,11 +1,10 @@
-import SimpleP from "../assemblage/simpleP"
-import System from "./system";
+import BulletManager from "../entity/bulletManager";
 import { getUnitVector } from "../util/helperFunc"
 
-export default class Input extends System {
+export default class Input {
     constructor() {
-        super(["keyInput", "mouseInput", "damage"]);
-        this.player;
+        this.player = null;
+        this.bulletManager = null;
     }
 
     update() {
@@ -16,6 +15,8 @@ export default class Input extends System {
         this.player = entities.find((entity) => {
             return entity.name === "player";
         });
+
+        this.bulletManager = new BulletManager();
 
         document.body.addEventListener("keypress", (e) => {
             if (e.key === "a") {
@@ -136,7 +137,7 @@ export default class Input extends System {
         document.body.addEventListener("mousedown", (e) => {
             if (this.player.fire.canFire) {
                 let unitVector = getUnitVector(canvas.width / 2, canvas.height / 2, e.x, e.y);
-                let projectile = SimpleP();
+                let projectile = this.bulletManager.makeBullet("simpleP");
                 projectile.position.x = this.player.position.x;
                 projectile.position.y = this.player.position.y;
                 projectile.velocity.x = unitVector.xunit * projectile.speed.max;

@@ -1,5 +1,4 @@
 import Component from "./component";
-import { BulletType } from "../util/types"
 
 /**
  * Defines how enemy fires bullets and what kind bullet they fire
