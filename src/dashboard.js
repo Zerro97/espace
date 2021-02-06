@@ -1,5 +1,6 @@
 import './dashboard.scss';
 import '../assets/logo.png';
+import Draggable from 'Draggable';
 
 let currentPage = "";
 let pages = document.getElementsByClassName("dashboard__main");
@@ -20,19 +21,40 @@ for (let link of links) {
         document.getElementById(currentPage).classList.add("show");
 
         if (currentPage === "equipmentPage") {
-            let boxes = "";
-            for (let i = 0; i < 56; i++) {
-                boxes += `<div class="equip__box"></div>`;
-            }
-
-            let equipments = document.getElementById("equip__container");
-            console.log(equipments);
-            equipments.innerHTML = boxes;
+            setUpEquipment();
+        } else if(currentPage === "mapPage") {
+            setUpMap();
         }
     });
 }
 
+function setUpEquipment() {
+    let boxes = "";
+    for (let i = 0; i < 56; i++) {
+        boxes += `<div class="equip__box"></div>`;
+    }
 
+    let equipments = document.getElementById("equip__container");
+    console.log(equipments);
+    equipments.innerHTML = boxes;
+}
+
+function setUpMap() {
+    let map = document.getElementById("mapContent");
+    let options = {
+        grid: 10,
+    };
+    new Draggable(map, options);
+
+    let stages = document.getElementsByClassName("map__stage");
+    for(let stage of stages) {
+        stage.addEventListener("mouseover", () => {
+            stage.innerHTML = `<div class="map__stageInfo"></div>`;
+        })
+    }
+    //console.log(map);
+    //console.log(new Draggable(map));
+}
 
 
 // statusLink.addEventListener("click", () => {
